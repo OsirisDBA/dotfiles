@@ -1,0 +1,31 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sda1 during installation
+UUID=4656ef46-550f-4ae5-950e-f6ae18ad9b9d /               ext4    errors=remount-ro 0       1
+/swapfile                                 none            swap    sw              0       0
+
+
+# Pollux
+//192.168.1.16/Video          /mnt/pollux/Video          cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.Admin  0  0
+//192.168.1.16/Audio          /mnt/pollux/Audio          cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.Admin  0  0
+//192.168.1.16/JHPhotography  /mnt/pollux/JHPhotography  cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.Admin  0  0
+//192.168.1.16/Public         /mnt/pollux/Public         cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.Admin  0  0
+
+
+# Docker Binds
+/mnt/pollux/Video                         /opt/docker/plex/video                  none  bind,ro  0  0
+/mnt/pollux/Public/Books/MainLibrary      /opt/docker/calibre-main/books          none  bind,ro  0  0
+/mnt/pollux/Public/Books/DoctorWho        /opt/docker/calibre-doctorwho/books     none  bind,ro  0  0
+/mnt/pollux/Public/Books/Programming      /opt/docker/calibre-programming/books   none  bind,ro  0  0
+/mnt/pollux/Public/Books/StarTrek         /opt/docker/calibre-startrek/books      none  bind,ro  0  0
+/mnt/pollux/Public/Books/StarWars         /opt/docker/calibre-starwars/books      none  bind,ro  0  0
+/mnt/pollux/Public/Books/TheGreatCourses  /opt/docker/calibre-greatcourses/books  none  bind,ro  0  0
+/mnt/pollux/Public/Books/Fanfiction       /opt/docker/calibre-fanfiction/books    none  bind,ro  0  0
+/mnt/pollux/Audio/Audiobooks              /opt/docker/booksonic/books             none  bind,rw  0  0
+/mnt/pollux/Audio/Podcasts                /opt/docker/booksonic/podcasts          none  bind,rw  0  0
+
