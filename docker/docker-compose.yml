@@ -1,0 +1,169 @@
+# docker-compose.yml
+---
+version: '2'
+services:
+  letsencrypt:
+    image: linuxserver/letsencrypt
+    container_name: letsencrypt
+    ports:
+      - 10443:443
+      - 1080:80
+    volumes:
+      - /opt/docker/letsencrypt/config:/config
+    restart: always
+    depends_on:
+      - plex
+      - booksonic
+      - calibre-startrek
+      - calibre-greatcourses
+      - lazylib
+      - calibre-fanfiction
+      - calibre-main
+      - calibre-starwars
+      - calibre-programming
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - EMAIL=frank@osirismedia.biz
+      - URL=osirismedia.biz
+      - SUBDOMAINS=home,www
+      - TZ=America/Chicago
+      - STAGING=true
+
+  plex:
+    image: linuxserver/plex
+    container_name: plex
+    network_mode: host
+    volumes:
+      - /opt/docker/plex/config:/config
+      - /opt/docker/plex/video:/video
+      - /opt/docker/plex/transcode:/transcode
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=latest
+      - TZ=America/Chicago
+
+  calibre-main:
+    image: linuxserver/calibre-web
+    container_name: calibre_main
+    volumes:
+      - /opt/docker/calibre-main/config:/config
+      - /opt/docker/calibre-main/books:/books
+    ports: 
+      - 8082:8083
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+  
+  calibre-doctorwho:
+    image: linuxserver/calibre-web
+    container_name: calibre_doctorwho
+    volumes:
+      - /opt/docker/calibre-doctorwho/config:/config
+      - /opt/docker/calibre-doctorwho/books:/books
+    ports: 
+      - 8083:8083
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+  
+  calibre-programming:
+    image: linuxserver/calibre-web
+    container_name: calibre_programming
+    volumes:
+      - /opt/docker/calibre-programming/config:/config
+      - /opt/docker/calibre-programming/books:/books
+    ports: 
+      - 8084:8083
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+  
+  calibre-startrek:
+    image: linuxserver/calibre-web
+    container_name: calibre_startrek
+    volumes:
+      - /opt/docker/calibre-startrek/config:/config
+      - /opt/docker/calibre-startrek/books:/books
+    ports: 
+      - 8085:8083
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+  
+  calibre-starwars:
+    image: linuxserver/calibre-web
+    container_name: calibre_starwars
+    volumes:
+      - /opt/docker/calibre-starwars/config:/config
+      - /opt/docker/calibre-starwars/books:/books
+    ports: 
+      - 8086:8083
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+  
+  calibre-greatcourses:
+    image: linuxserver/calibre-web
+    container_name: calibre_greatcourses
+    volumes:
+      - /opt/docker/calibre-greatcourses/config:/config
+      - /opt/docker/calibre-greatcourses/books:/books
+    ports: 
+      - 8087:8083
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+  
+  calibre-fanfiction:
+    image: linuxserver/calibre-web
+    container_name: calibre_fanfiction
+    volumes:
+      - /opt/docker/calibre-fanfiction/config:/config
+      - /opt/docker/calibre-fanfiction/books:/books
+    ports: 
+      - 8088:8083
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+
+  booksonic:
+    image: linuxserver/booksonic
+    container_name: booksonic
+    volumes:
+      - /opt/docker/booksonic/config:/config
+      - /opt/docker/booksonic/books:/books
+      - /opt/docker/booksonic/podcasts:/podcasts
+      - /opt/docker/booksonic/media:/media
+    ports: 
+      - 8089:4040
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+      - CONTEXT_PATH=/booksonic
+
+  lazylib:
+    image: linuxserver/lazylibrarian
+    container_name: lazylib
+    ports: 
+      - 8090:5299
+    volumes:
+      - /opt/docker/lazylib/config:/config
+      - /opt/docker/lazylib/downloads:/downloads
+      - /opt/docker/lazylib/books:/books
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
