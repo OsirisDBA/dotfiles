@@ -28,4 +28,4 @@ UUID=4656ef46-550f-4ae5-950e-f6ae18ad9b9d /               ext4    errors=remount
 /mnt/pollux/Public/Books/Fanfiction       /opt/docker/calibre-fanfiction/books    none  bind,ro  0  0
 /mnt/pollux/Audio/Audiobooks              /opt/docker/booksonic/books             none  bind,rw  0  0
 /mnt/pollux/Audio/Podcasts                /opt/docker/booksonic/podcasts          none  bind,rw  0  0
-
+/mnt/pollux/Video                         /opt/docker/sickrage/tv                 none  bind,ro  0  0

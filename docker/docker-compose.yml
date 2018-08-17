@@ -167,3 +167,18 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Chicago
+
+  sickrage:
+    image: linuxserver/sickrage
+    container_name: sickrage
+    ports:
+      - 8091:8081
+    volumes:
+      - /opt/docker/sickrage/config:/config
+      - /opt/docker/sickrage/downloads:/downloads
+      - /opt/docker/sickrage/tv:/tv
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
