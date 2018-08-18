@@ -11,10 +11,10 @@ UUID=4656ef46-550f-4ae5-950e-f6ae18ad9b9d /               ext4    errors=remount
 
 
 # Pollux
-//192.168.1.16/Video          /mnt/pollux/Video          cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.Admin  0  0
-//192.168.1.16/Audio          /mnt/pollux/Audio          cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.Admin  0  0
-//192.168.1.16/JHPhotography  /mnt/pollux/JHPhotography  cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.Admin  0  0
-//192.168.1.16/Public         /mnt/pollux/Public         cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.Admin  0  0
+//192.168.1.16/Video          /mnt/pollux/Video          cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.root,uid=1000,gid=1000  0  0
+//192.168.1.16/Audio          /mnt/pollux/Audio          cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.root,uid=1000,gid=1000  0  0
+//192.168.1.16/JHPhotography  /mnt/pollux/JHPhotography  cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.root,uid=1000,gid=1000  0  0
+//192.168.1.16/Public         /mnt/pollux/Public         cifs  defaults,vers=1.0,sec=ntlm,credentials=/home/frank/.creds/pollux.root,uid=1000,gid=1000  0  0
 
 
 # Docker Binds
@@ -29,3 +29,8 @@ UUID=4656ef46-550f-4ae5-950e-f6ae18ad9b9d /               ext4    errors=remount
 /mnt/pollux/Audio/Audiobooks              /opt/docker/booksonic/books             none  bind,rw  0  0
 /mnt/pollux/Audio/Podcasts                /opt/docker/booksonic/podcasts          none  bind,rw  0  0
 /mnt/pollux/Video                         /opt/docker/sickrage/tv                 none  bind,ro  0  0
+/mnt/pollux/Audio/Music                   /opt/docker/airsonic/music              none  bind,rw  0  0
+/mnt/pollux/Audio/Podcasts                /opt/docker/airsonic/podcasts           none  bind,rw  0  0
+/mnt/pollux/Audio/Audiobooks              /opt/docker/airsonic/media/Audiobooks   none  bind,rw  0  0
+/mnt/pollux/Audio/Comedy                  /opt/docker/airsonic/media/Comedy       none  bind,rw  0  0
+/mnt/pollux/Public/Books                  /opt/docker/lazylib/books               none  bind,rw  0  0
