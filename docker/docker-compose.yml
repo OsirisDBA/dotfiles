@@ -21,6 +21,8 @@ services:
       - calibre-starwars
       - lazylib
       - plex
+      - sickrage
+      - airsonic
     environment:
       - PUID=1000
       - PGID=1000
@@ -28,7 +30,7 @@ services:
       - URL=osirismedia.biz
       - SUBDOMAINS=home,www
       - TZ=America/Chicago
-      - STAGING=true
+      - STAGING=false
 
   plex:
     image: linuxserver/plex
@@ -166,4 +168,37 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+      - TZ=America/Chicago
+
+  sickrage:
+    image: linuxserver/sickrage
+    container_name: sickrage
+    ports:
+      - 8091:8081
+    volumes:
+      - /opt/docker/sickrage/config:/config
+      - /opt/docker/sickrage/downloads:/downloads
+      - /opt/docker/sickrage/tv:/tv
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+
+  airsonic:
+    image: linuxserver/airsonic
+    container_name: airsonic
+    ports:
+      - 8092:4040
+    volumes:
+      - /opt/docker/airsonic/config:/config
+      - /opt/docker/airsonic/music:/music
+      - /opt/docker/airsonic/playlists:/playlists
+      - /opt/docker/airsonic/podcasts:/podcasts
+      - /opt/docker/airsonic/media:/media
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - CONTEXT_PATH=/airsonic
       - TZ=America/Chicago

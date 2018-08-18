@@ -98,7 +98,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias dcps="grc docker-compose ps"
+alias dcps="grc docker-compose -f $HOME/docker/docker-compose.yml  ps"
+alias dc="grc docker-compose -f $HOME/docker/docker-compose.yml"
 alias config='/usr/bin/git --git-dir=/home/frank/.cfg/ --work-tree=/home/frank'
 alias ps="grc ps"
 alias vim="$HOME/bin/nvim.appimage -u $HOME/.vimrc"
