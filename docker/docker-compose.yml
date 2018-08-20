@@ -12,15 +12,15 @@ services:
       - /opt/docker/letsencrypt/config:/config
     restart: always
     depends_on:
-      - plex
       - booksonic
-      - calibre-startrek
-      - calibre-greatcourses
-      - lazylib
       - calibre-fanfiction
+      - calibre-greatcourses
       - calibre-main
-      - calibre-starwars
       - calibre-programming
+      - calibre-startrek
+      - calibre-starwars
+      - lazylib
+      - plex
       - sickrage
       - airsonic
     environment:
