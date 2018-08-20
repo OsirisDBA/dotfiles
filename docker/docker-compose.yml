@@ -202,3 +202,17 @@ services:
       - PGID=1000
       - CONTEXT_PATH=/airsonic
       - TZ=America/Chicago
+ 
+  beets:
+    image: linuxserver/beets
+    container_name: beets
+    ports:
+      - 8093:8337
+    volumes:
+      - /opt/docker/beets/config:/config
+      - /opt/docker/beets/music:/music
+      - /opt/docker/beets/downloads:/downloads
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000

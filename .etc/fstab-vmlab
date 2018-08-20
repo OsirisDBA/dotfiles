@@ -34,3 +34,5 @@ UUID=4656ef46-550f-4ae5-950e-f6ae18ad9b9d /               ext4    errors=remount
 /mnt/pollux/Audio/Audiobooks              /opt/docker/airsonic/media/Audiobooks   none  bind,rw  0  0
 /mnt/pollux/Audio/Comedy                  /opt/docker/airsonic/media/Comedy       none  bind,rw  0  0
 /mnt/pollux/Public/Books                  /opt/docker/lazylib/books               none  bind,rw  0  0
+/mnt/pollux/Audio/Music                   /opt/docker/beets/music                 none  bind,rw  0  0
+/mnt/pollux/Audio/Downloads               /opt/docker/beets/downloads             none  bind,rw  0  0
